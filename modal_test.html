@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/products.css" />
+
+  <body>
+    <div class="col">
+      <div class="tab" id="tab">
+        <div
+          class="phone-container"
+          data-bs-toggle="modal"
+          data-bs-target="#modalId_Description"
+        >
+          <picture>
+            <source
+              srcset="Arduino UNO Mini Limited Edition"
+              type="image/svg+xml"
+            />
+            <img
+              src="img/Board/Arduino UNO Mini Limited Edition 1.png"
+              class="img-fluid"
+              alt="image desc"
+              id="product-image"
+            />
+          </picture>
+        </div>
+        <div class="product-info">
+          <div class="logo-product-name">
+            <h1 id="product-name">Arduino UNO Mini Limited Edition</h1>
+            <p id="price">₱ 2000</p>
+          </div>
+        </div>
+        <div class="buttons">
+          <form method="post" action="">
+            <input type="hidden" name="cart_product_id" value="$productId" />
+            <input type="hidden" name="cart_customer_id" value="$User_ID" />
+            <button type="submit" name="add-to-cart" id="add-to-cart">
+              Add to Cart
+            </button>
+            <button
+              type="button"
+              id="buy-now"
+              class="btn btn-primary btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#modalId"
+            >
+              Buy Now
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalId"
+      tabindex="-1"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      role="dialog"
+      aria-labelledby="modalTitleId"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Checkout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              <img src="$productImg" class="img-fluid rounded-top" alt="" />
+
+              <h1>$productName</h1>
+              <h4>₱" . number_format($productPrice, 2, '.', ',') . "</h4>
+
+              <div class="mb-3">
+                <label class="form-label">Delivery Address</label>
+                <input type="hidden" name="bn_product_id" value="$productId" />
+                <input type="hidden" name="bn_customer_id" value="$User_ID" />
+                <input
+                  type="text"
+                  class="form-control"
+                  name="bn_delivery_address"
+                  id=""
+                  aria-describedby="helpId"
+                  value="$deliveryAddress"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Payment Method</label>
+                <select
+                  class="form-select form-select-lg"
+                  name="bn_payment_method"
+                  required
+                >
+                  <option selected>Select one</option>
+                  <option value="Cash on Delivery">Cash on Delivery</option>
+                  <option value="G-Cash">G-Cash</option>
+                  <option value="Paypal">Paypal</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  name="buy-now"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Checkout
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      data-bs-toggle="modal"
+      data-bs-target="#modalId_Description"
+    >
+      Launch
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalId_Description"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">Product Title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <img src='$productImg' class='img-fluid rounded-top' alt=''' />
+              </div>
+              <div class="row">
+                <p>Product Description</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var modalId = document.getElementById("modalId");
+
+      modalId.addEventListener("show.bs.modal", function (event) {
+        // Button that triggered the modal
+        let button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        let recipient = button.getAttribute("data-bs-whatever");
+
+        // Use above variables to manipulate the DOM
+      });
+    </script>
+
+    <script src="css/bootstrap.bundle.min.js"></script>
+    <script src="css/popper.min.js"></script>
+    <script src="css/bootstrap_js.js"></script>
+  </body>
+</html>
